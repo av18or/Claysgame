@@ -15,7 +15,16 @@ td {
 
 }
 
+
+.table_layer{
+    position:absolute;
+    width: 10rem;
+    height: 10rem;
+  }
+
+
+
 .text {
     color: white;
-    
+
 }
