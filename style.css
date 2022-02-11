@@ -5,3 +5,17 @@ body {
 h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+td {
+    background-color: black;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5px;
+
+
+}
+
+.text {
+    color: white;
+    
+}
