@@ -69,11 +69,13 @@ body {
 .cell.x::before,
 .board.x .cell:not(.x):not(.circle):hover::before {
   transform: rotate(45deg);
+  border-radius: 10px;
 }
 
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after {
   transform: rotate(-45deg);
+  border-radius: 10px;
 }
 
 .cell.circle::before,
@@ -95,5 +97,43 @@ body {
 .board.circle .cell:not(.x):not(.circle):hover::after {
   width: calc(var(--mark-size) * .7);
   height: calc(var(--mark-size) * .7);
+  background-color: white;
+}
+
+
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10rem;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.winning-message button {
+  font-size: 5rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: .25em .5em;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.winning-message button:hover {
   background-color: black;
+  color: white;
+  border-color: white;
+  border-radius: 10px;
+}
+
+.winning-message.show {
+  display: flex;
 }
