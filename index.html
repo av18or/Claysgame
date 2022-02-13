@@ -11,58 +11,25 @@
     
 <h1>Clay's Tic Tac Toe Game</h1>
 
-<div class="content">
-    <!--create table with nine squares that will have text-->
-    <table class="table_overlay">
-        <tr>
-            <td id="first_square_text" class="text"></td>
-            <td id="second_square_text" class="text"></td>
-            <td id="third_square_text" class="text"></td>
-        </tr>
+<div class="board" id="board">
 
-        <tr>
-            <td id="fourth_square_text" class="text"></td>
-            <td id="fifth_square_text" class="text"></td>
-            <td id="sixth_square_text" class="text"></td>
-        </tr>
-        <tr>
-            <td id="seventh_square_text" class="text"></td>
-            <td id="eigth_square_text" class="text"></td>
-            <td id="ninth_square_text" class="text"></td>
-        </tr>
-    </table>
-
-<!--create board -->
-<div class="board">
-    <table>
-        <tr>
-            <td id="one"></td>
-            <td id="two"></td>
-            <td id="three"></td>
-        </tr>
-        <tr>
-            <td id="four"></td>
-            <td id="five"></td>
-            <td id="six"></td>
-        </tr>
-        <tr>
-            <td id="seven"></td>
-            <td id="eight"></td>
-            <td id="nine"></td>
-        </tr>
-    </table>
-</div>
-
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
 </div>
 
 
-
-
-
-
-
-
-
+<div class="winner-message" id="winnerMessage">
+    
+<div data-winner-message></div>
+<button id="restart">Restart</button>
+</div>
 
     <script src="script.js"></script>
 </body>
