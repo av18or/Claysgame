@@ -1,8 +1,8 @@
-//define variables and create array containing arrays. 
+//define variables for players and create array for winning board combinations. 
 
 const playerX = 'x'
 const playerO = 'circle'
-const combinations = [
+const combinations = [    // winning combinations arrays
 [0, 1, 2],
 [3, 4, 5],
 [6, 7, 8],
@@ -14,7 +14,7 @@ const combinations = [
 ]
 
 
-// define variables for each cell on the board, and button. 
+// define variables for each cell on the board, button, and messages. 
 
 const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
@@ -23,12 +23,14 @@ const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn
 
-startGame()  //call startgame
-
-restartButton.addEventListener('click', startGame,)
+startGame()  //call startgame function
 
 
-// add functions 
+// event listener for the restart button 
+restartButton.addEventListener('click', startGame,)   
+
+
+// add functions to remove players at the start of the game
 
 function startGame() {
     circleTurn = false
@@ -36,7 +38,7 @@ function startGame() {
         cell.classList.remove(playerX)
         cell.classList.remove(playerO)
         cell.removeEventListener('click', handleClick)
-        cell.addEventListener('click', handleClick, {once: true} )
+        cell.addEventListener('click', handleClick, {once: true} )  //fires only once
         
     })
 
@@ -44,13 +46,15 @@ function startGame() {
     winningMessageElement.classList.remove('show')
 }
 
+
+// create a way to check for a win
 function handleClick(e) {
-    const cell = e.target
+    const cell = e.target  // targets the cell we click on
     const currentClass = circleTurn ? playerO : playerX
     placeMark(cell, currentClass)
     if (checkWin(currentClass)) {
       endGame(false)
-    } else if (isDraw()) {
+    } else if (isDraw()) {    // end the game if we have a draw, else swap turns
       endGame(true)
     } else {
       swapTurns()
@@ -59,9 +63,7 @@ function handleClick(e) {
     
   }
 
-
-  // create remaining functions
-
+// create a message that displays based on a win or tie 
   function endGame(draw) {
     if (draw) {
       winningMessageTextElement.innerText = 'Tie'
@@ -70,11 +72,13 @@ function handleClick(e) {
       winningMessageTextElement.innerText = `${circleTurn ? "o" : "x"} wins`
       taDa();
     }
-    winningMessageElement.classList.add('show')
+    winningMessageElement.classList.add('show')  // displays the winning message
   }
   
+
+  // check to see if every cell has been filled for a tie/draw
   function isDraw() {
-    return [...cellElements].every(cell => {
+    return [...cellElements].every(cell => {   
       return cell.classList.contains(playerX) || cell.classList.contains(playerO)
     })
   }
@@ -83,16 +87,20 @@ function handleClick(e) {
     cell.classList.add(currentClass)
   }
   
+
+  //Add a way to swap turns 
   function swapTurns() {
     circleTurn = !circleTurn
   }
   
-  function setBoardHoverClass() {
+
+  // X or O displays on the board while hovering based on who's turn it currently is
+  function setBoardHoverClass() {      
     board.classList.remove(playerX)
     board.classList.remove(playerO)
     if (circleTurn) {
       board.classList.add(playerO)
-       oPlay(); 
+       oPlay();                     
     } else {
       board.classList.add(playerX)
       xPlay();
@@ -100,7 +108,7 @@ function handleClick(e) {
   }
   
   
-
+// checks winning combination arrays to see if we have a win yet or not
   function checkWin(currentClass) {
     return combinations.some(combination => {
       return combination.every(index => {
