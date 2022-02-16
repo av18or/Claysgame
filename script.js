@@ -25,10 +25,10 @@ let circleTurn
 
 startGame()  //call startgame
 
-restartButton.addEventListener('click', startGame)
+restartButton.addEventListener('click', startGame,)
 
 
-// add fucntions 
+// add functions 
 
 function startGame() {
     circleTurn = false
@@ -36,7 +36,8 @@ function startGame() {
         cell.classList.remove(playerX)
         cell.classList.remove(playerO)
         cell.removeEventListener('click', handleClick)
-        cell.addEventListener('click', handleClick, {once: true})
+        cell.addEventListener('click', handleClick, {once: true} )
+        
     })
 
     setBoardHoverClass()
@@ -55,7 +56,76 @@ function handleClick(e) {
       swapTurns()
       setBoardHoverClass()
     }
+    
   }
 
 
   // create remaining functions
+
+  function endGame(draw) {
+    if (draw) {
+      winningMessageTextElement.innerText = 'Tie'
+      tie();
+    } else {
+      winningMessageTextElement.innerText = `${circleTurn ? "o" : "x"} wins`
+      taDa();
+    }
+    winningMessageElement.classList.add('show')
+  }
+  
+  function isDraw() {
+    return [...cellElements].every(cell => {
+      return cell.classList.contains(playerX) || cell.classList.contains(playerO)
+    })
+  }
+  
+  function placeMark(cell, currentClass) {
+    cell.classList.add(currentClass)
+  }
+  
+  function swapTurns() {
+    circleTurn = !circleTurn
+  }
+  
+  function setBoardHoverClass() {
+    board.classList.remove(playerX)
+    board.classList.remove(playerO)
+    if (circleTurn) {
+      board.classList.add(playerO)
+       oPlay(); 
+    } else {
+      board.classList.add(playerX)
+      xPlay();
+    }
+  }
+  
+  
+
+  function checkWin(currentClass) {
+    return combinations.some(combination => {
+      return combination.every(index => {
+        return cellElements[index].classList.contains(currentClass)
+      })
+    })
+  }
+
+  // add audio functions
+    function oPlay() {
+        const audio = new Audio("audio/beep-short.mp3");
+        audio.play();
+    }
+
+    function xPlay() {
+        const audio = new Audio ("audio/clockbeep.mp3");
+        audio.play();
+    }
+
+    function taDa() {
+        const audio = new Audio ("audio/tada.mp3");
+        audio.play();
+    }
+
+    function tie() {
+        const audio = new Audio ("audio/tie.wav");
+        audio.play();
+    }

@@ -11,18 +11,24 @@
 
 body {
   margin: 0;
-  background-color: rgba(127, 255, 212, 0.418);
+  background-image: linear-gradient(to right, rgba(0, 255, 98, 0.651), rgba(0, 102, 128, 0.664), rgb(255, 255, 255));
 }
 
+h1 {
+  font-family: arial;
+  text-align: center;
+  margin-top: 50px;
+}
 .board {     
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: grid;
   justify-content: center;
   align-content: center;
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(3, auto)
+  
 }
 
 .cell {
@@ -35,25 +41,40 @@ body {
   position: relative;
   cursor: pointer;
   border-radius: 5px;;
-  margin: 5px;
+  margin: 10px;
+  background-color: white;
+}
+
+@keyframes spin1 { 
+  from { 
+      transform: rotate(0deg); 
+  } to { 
+      transform: rotate(180deg); 
+  }
+}
+
+.cell:hover {
+  animation-duration: 1s;
+  animation-name: spin1;
 }
 
 
 .cell.x,
 .cell.circle {
   cursor: not-allowed;
+  
 }
 
 .cell.x::before,
 .cell.x::after,
 .cell.circle::before {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after,
 .board.circle .cell:not(.x):not(.circle):hover::before {
-  background-color: lightgrey;
+  background-color: black;
 }
 
 .cell.x::before,
@@ -69,13 +90,15 @@ body {
 .cell.x::before,
 .board.x .cell:not(.x):not(.circle):hover::before {
   transform: rotate(45deg);
-  border-radius: 10px;
+  border-radius: 20px;
+  
 }
 
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after {
   transform: rotate(-45deg);
-  border-radius: 10px;
+  border-radius: 20px;
+  
 }
 
 .cell.circle::before,
@@ -128,12 +151,22 @@ body {
 }
 
 .winning-message button:hover {
-  background-color: black;
+  background-color: green;
   color: white;
-  border-color: white;
+  border-color: green;
   border-radius: 10px;
 }
 
 .winning-message.show {
   display: flex;
 }
+
+
+
+
+
+
+
+
+
+
