@@ -164,6 +164,55 @@ h1 {
 
 
 
+@media only screen and (max-width: 600px) {
+
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --cell-size: 150px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+
+
+  h1 {
+    font-family: arial;
+    text-align: center;
+    margin-top: 100px;
+  }
+  .board {     
+    width: 100vw;
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto)
+    
+  }
+  
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;;
+    margin: 1px;
+    background-color: white;
+  }
+
+
+
+}
+
+
+
 
 
 
