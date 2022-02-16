@@ -183,13 +183,15 @@ h1 {
   }
   .board {     
     width: 100vw;
-    height: 80vh;
+    height: 50vh;
     display: grid;
     justify-content: center;
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(3, auto)
+    grid-template-columns: repeat(3, auto);
+    padding-left: 20px;
+    padding-right: 20px;
     
   }
   
