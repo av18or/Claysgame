@@ -5,7 +5,7 @@
 }
 
 :root {
-  --cell-size: 200px;
+  --cell-size: 150px;
   --mark-size: calc(var(--cell-size) * .9);
 }
 
@@ -171,7 +171,7 @@ h1 {
   }
   
   :root {
-    --cell-size: 150px;
+    --cell-size: 100px;
     --mark-size: calc(var(--cell-size) * .9);
   }
 
@@ -205,7 +205,7 @@ h1 {
     position: relative;
     cursor: pointer;
     border-radius: 5px;;
-    margin: 1px;
+    margin: 2px;
     background-color: white;
   }
 
